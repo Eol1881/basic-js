@@ -1,27 +1,30 @@
 console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
 
-function sortByHeight(arr) {
-  let result = [];
-  let filteredArr = arr.filter(x => x !== -1).sort((a, b) => a - b)
-  console.log(filteredArr);
-  let filteredIndex = 0;
-  for (let i = 0; i < arr.length; i++) {
-    const element = arr[i];
-    if (element === -1) {
-      result.push(-1);
-      continue;
-    }
-
-    result.push(filteredArr[filteredIndex]);
-    filteredIndex++;
-
+function getSumOfDigits(n) {
+  let x = n.toString();
+  let count = 0;
+  for (let i = 0; i < x.length; i++) {
+    const char = parseInt(x[i]);
+    count += char;
   }
-  console.log(result);
-  return result;
+
+  if (count.toString().length === 1) {
+    console.log(count);
+    return count
+  } else {
+    console.log(parseInt(x[x.length - 1]));
+    return parseInt(x[x.length - 1]);
+  }
 }
 
 
 
+//For 100, the result should be 1 (1 + 0 + 0 = 1)
+getSumOfDigits(100) //=> 1
 
+//For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
+getSumOfDigits(91) //=> 1
 
-sortByHeight([-1, 150, 190, 170, -1, -1, 160, 180]) //=> [-1, 150, 160, 170, -1, -1, 180, 190]
+getSumOfDigits(35) // 8
+getSumOfDigits(99) // 9
+getSumOfDigits(123) // 6
